@@ -100,9 +100,15 @@ print(f"[+] Free swap memory : {bytes_to_GB(swap.free)}")
 print(f"[+] Used swap memory : {bytes_to_GB(swap.used)}")
 print(f"[+] Percentage Used: {swap.percent}%")
 
-# Mostrará los usuarios que tienen sesión inicada
+# Mostrará los usuarios que  se crearon y quienes tienen sesión inicada
 import pwd
 
 users = pwd.getpwall()
 for user in users:
     print(user.pw_name, user.pw_shell)
+    
+import subprocess
+from subprocess import Popen, PIPE, STDOUT
+
+who = Popen(['who'],stdin=PIPE, stdout=PIPE, stderr=STDOUT)
+print who.stdout.read()
