@@ -1,39 +1,39 @@
-# importing the required modules
+# importar lo módulo platform
 
 import platform
 
-# printing the Architecture of the OS
+# Muestra la aqruitectura del SO
 print("[+] Architecture :", platform.architecture()[0])
 
-# Displaying the machine
+#Visualización de la maquina virtual
 print("[+] Machine :", platform.machine())
 
-# printing the Operating System release information
+# Muestra la versión de SO
 print("[+] Operating System Release :", platform.release())
 
-# prints the currently using system name
+# Muestra el nombre del SO que se esta usando
 print("[+] System Name :",platform.system())
 
-# This line will print the version of your Operating System
+# Mostrará la versión del SO
 print("[+] Operating System Version :", platform.version())
 
-# This will print the Node or hostname of your Operating System
+# Imprimirá o mostrará el hostname
 print("[+] Node: " + platform.node())
 
-# This will print your system platform
+# Mostrará la plataforma de sitema
 print("[+] Platform :", platform.platform())
 
-# This will print the processor information
+# Mostrará la info del procesador
 print("[+] Processor :",platform.processor())
 
 from datetime import datetime
 import psutil
 
-# Using the psutil library to get the boot time of the system
+# Se usa la librería psutil para obtener la info de arranque
 boot_time = datetime.fromtimestamp(psutil.boot_time())
 print("[+] System Boot Time :", boot_time)
 
-# getting thesystem up time from the uptime file at proc directory
+# Mostrará el tiempo de uso del sistema
 with open("/proc/uptime", "r") as f:
     uptime = f.read().split(" ")[0].strip()
 
@@ -56,46 +56,53 @@ users = pwd.getpwall()
 for user in users:
     print(user.pw_name, user.pw_shell)
 
-# importing the required packages
+# Importa los paquetes psutil
 import psutil
 
-# This code will print the number of CPU cores present
+# Mostrará el número de núcleos del CPU 
 print("[+] Number of Physical cores :", psutil.cpu_count(logical=False))
 print("[+] Number of Total cores :", psutil.cpu_count(logical=True))
 print("\n")
-# This will print the maximum, minimum and current CPU frequency
+#  Esto imprimirá la frecuencia de CPU máxima, mínima y actual
 cpu_frequency = psutil.cpu_freq()
 print(f"[+] Max Frequency : {cpu_frequency.max:.2f}Mhz")
 print(f"[+] Min Frequency : {cpu_frequency.min:.2f}Mhz")
 print(f"[+] Current Frequency : {cpu_frequency.current:.2f}Mhz")
 print("\n")
-# This will print the usage of CPU per core
+# Motrará el uso de CPU por núcleo
 for i, percentage in enumerate(psutil.cpu_percent(percpu=True, interval=1)):
     print(f"[+] CPU Usage of Core {i} : {percentage}%")
 print(f"[+] Total CPU Usage : {psutil.cpu_percent()}%")
 
-# importing the requred modules
+# importando los módulos
 import psutil
 
-# writing a function to convert bytes to GigaByte
+# Función de conversión de bytes a Gb
 def bytes_to_GB(bytes):
     gb = bytes/(1024*1024*1024)
     gb = round(gb, 2)
     return gb
 
-# Using the virtual_memory() function it will return a tuple
+# Toma la información del módulo psutil la memoria virtual
 virtual_memory = psutil.virtual_memory()
 
-#This will print the primary memory details
+# Mostrará los detalles de la memoria primaria
 print("[+] Total Memory present :", bytes_to_GB(virtual_memory.total), "Gb")
 print("[+] Total Memory Available :", bytes_to_GB(virtual_memory.available), "Gb")
 print("[+] Total Memory Used :", bytes_to_GB(virtual_memory.used), "Gb")
 print("[+] Percentage Used :", virtual_memory.percent, "%")
 print("\n")
 
-# This will print the swap memory details if available
+# Mostrará la memoria de apoyo si aplica
 swap = psutil.swap_memory()
 print(f"[+] Total swap memory :{bytes_to_GB(swap.total)}")
 print(f"[+] Free swap memory : {bytes_to_GB(swap.free)}")
 print(f"[+] Used swap memory : {bytes_to_GB(swap.used)}")
 print(f"[+] Percentage Used: {swap.percent}%")
+
+# Mostrará los usuarios que tienen sesión inicada
+import pwd
+
+users = pwd.getpwall()
+for user in users:
+    print(user.pw_name, user.pw_shell)
