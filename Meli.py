@@ -100,7 +100,7 @@ print(f"[+] Free swap memory : {bytes_to_GB(swap.free)}")
 print(f"[+] Used swap memory : {bytes_to_GB(swap.used)}")
 print(f"[+] Percentage Used: {swap.percent}%")
 
-# Mostrará los usuarios que  se crearon y quienes tienen sesión inicada
+# Mostrará los usuarios que  se crearon y quienes tienen sesión iniciada
 import pwd
 
 users = pwd.getpwall()
