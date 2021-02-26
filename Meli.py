@@ -115,5 +115,3 @@ print who.stdout.read()
 
 #Exporta todo a un .csv
 df.to_csv("infosystem.csv")
-
-https://www.elastic.co/guide/en/elasticsearch/reference/current/deb.html
