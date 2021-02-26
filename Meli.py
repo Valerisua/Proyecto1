@@ -112,3 +112,7 @@ from subprocess import Popen, PIPE, STDOUT
 
 who = Popen(['who'],stdin=PIPE, stdout=PIPE, stderr=STDOUT)
 print who.stdout.read()
+
+#Exporta todo a un .csv
+df.to_csv("infosystem.csv")
+
